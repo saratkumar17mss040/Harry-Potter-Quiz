@@ -1,0 +1,81 @@
+const readlineSync = require('readline-sync');
+const chalk = require('chalk');
+
+var score = 0;
+
+const questions = [
+	{
+		question: 'What house at Hogwarts does Harry belong to ? \n',
+		options: ['Ravenclaw', 'Slytherin', 'Gryffindor', 'Hufflepuff'],
+		answer: 3,
+	},
+	{
+		question: 'What position does Harry play on his Quidditch team ? \n',
+		options: ['Keeper', 'Bludger', 'Chaser', 'Seeker'],
+		answer: 4,
+	},
+	{
+		question: 'How did Harry get the scar on his forehead ? \n',
+		options: [
+			"He crached the weasley's car into the whomping tree",
+			'He was attacked by a basilisk',
+			'In a quidditch accident',
+			'Voldermort tried to kill him when he was a baby',
+		],
+		answer: 4,
+	},
+	{
+		question: "What does the Sorcerer's Stone do ? \n",
+		options: [
+			'Transforms any  metal into gold & produces the elixir of life',
+			'Makes the one that holds it invisible',
+			'Tells the one that holds it their future',
+			'Transforms the one who holds it into an animal',
+		],
+		answer: 1,
+	},
+	{
+		question: 'Who is Fluffy ? \n',
+		options: [
+			'A three headed dog',
+			"Haary's owl",
+			"Hagrid's dragon",
+			"Hermione's cat",
+		],
+		answer: 1,
+	},
+];
+
+const name = chalk.blueBright(
+	readlineSync.question(
+		chalk.yellow('Please enter your name to start the quiz: \n')
+	)
+);
+
+console.log(
+	chalk.bold.magenta(`\t\tWelcome ${name} for harry potter quiz !\n`)
+);
+console.log(chalk.bold.bgGreenBright('\t\tQuiz starts'));
+
+askQuestions(questions, name);
+
+function askQuestions(questions, name) {
+	for (let currentQuestion of questions) {
+		let actualQuestion = chalk.greenBright(currentQuestion.question);
+		for (let i = 0; i < currentQuestion.options.length; i++) {
+			currentQuestion.options[i] = chalk.blueBright(currentQuestion.options[i]);
+		}
+		let userAnswer = readlineSync.keyInSelect(
+			currentQuestion.options,
+			actualQuestion
+		);
+
+		if (userAnswer + 1 === currentQuestion.answer) {
+			console.log(chalk.magentaBright('Correct answer !\n'));
+			score++;
+		} else console.log(chalk.red('Wrong answer !\n'));
+	}
+	console.log('Quiz player details');
+	console.log(`Name: ${name}`);
+	console.log(`Score: ${score}`);
+}

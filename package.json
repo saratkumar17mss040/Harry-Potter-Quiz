@@ -1,0 +1,31 @@
+{
+  "name": "harry-potter-quiz",
+  "version": "1.0.0",
+  "description": "A simple harry potter nodejs cli quiz !",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saratkumar17mss040/Harry-Potter-Quiz.git"
+  },
+  "keywords": [
+    "harry",
+    "potter",
+    "nodejs",
+    "cli",
+    "quiz"
+  ],
+  "author": "sarath",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saratkumar17mss040/Harry-Potter-Quiz/issues"
+  },
+  "homepage": "https://github.com/saratkumar17mss040/Harry-Potter-Quiz#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "readline-sync": "^1.4.10"
+  }
+}
