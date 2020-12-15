@@ -3,6 +3,9 @@ const chalk = require('chalk');
 
 var score = 0;
 
+const names = ['dummy1', 'dummy2', 'dummy3'];
+const scores = [0, 0, 0];
+
 const questions = [
 	{
 		question: 'What house at Hogwarts does Harry belong to ? \n',
@@ -44,6 +47,52 @@ const questions = [
 		],
 		answer: 1,
 	},
+	{
+		question: 'What power do the dementors have over people ? \n',
+		options: [
+			'They drain them of all happiness',
+			'They make them od their bidding',
+			'They make them go crazy',
+			'They cause them to harm one another',
+		],
+		answer: 1,
+	},
+	{
+		question: 'What does the Imperius Curse do ? \n',
+		options: ['Tortures', 'Turns the person into a pig', 'Kills', 'Controls'],
+		answer: 4,
+	},
+	{
+		question: 'What is an Auror ? \n',
+		options: [
+			'A professional qudditch player',
+			'A wizard that can change his appearance at will',
+			'A career counselor at hogwarts',
+			'A person that catches dark wizards',
+		],
+		answer: 4,
+	},
+	{
+		question: 'Who kills Professor Dumbledore ? \n',
+		options: [
+			'Fenrir greyback',
+			'Severus snape',
+			'Bellatrix lestrange',
+			'Draco malfoy',
+		],
+		answer: 2,
+	},
+	{
+		question:
+			"Who poses as Mad-Eye Moody, Harry's 4th year Defense Against the Dark Arts professor ? \n",
+		options: [
+			'Peter pettigrew',
+			'Voldermort',
+			'Barty crouch, Jr',
+			'Sirius black',
+		],
+		answer: 3,
+	},
 ];
 
 const name = chalk.blueBright(
@@ -78,4 +127,14 @@ function askQuestions(questions, name) {
 	console.log('Quiz player details');
 	console.log(`Name: ${name}`);
 	console.log(`Score: ${score}`);
+
+	for (let i = 0; i < scores.length; i++) {
+		if (score > scores[i]) {
+			scores[i] = score;
+			names[i] = name;
+			console.log(`You have broken the record and you are number ${i + 1}`);
+			console.log('Do send me the screenshot and i will update your score !');
+			break;
+		}
+	}
 }
